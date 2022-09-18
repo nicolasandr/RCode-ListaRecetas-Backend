@@ -22,8 +22,3 @@ cors: npm install cors
  Para produccion : npm start
  Para desarrollo : npm run dev
 
-## Ejecutamos json-server
-
-json-server --watch db.json --port 3002
-
-### `npm start`
