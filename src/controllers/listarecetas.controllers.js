@@ -26,3 +26,17 @@ export const crearReceta = async (req, res) => {
         });
     }
 };
+
+export const listaRecetas = async (req, res) => {
+    try {
+        //buscar en la BD la coleccion de recetas
+        const listaRecetas = await Receta.find();
+        //enviar la respuesta
+        res.status(200).json(listaRecetas);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar los productos',
+        });
+    }
+};

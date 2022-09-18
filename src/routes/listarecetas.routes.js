@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import {crearReceta} from '../controllers/listarecetas.controllers'
+import {crearReceta, listaRecetas} from '../controllers/listarecetas.controllers'
 const router = Router();
 
 //rutas de la lista de recetas
 router.route('/')
-// .get(crearReceta)
+.get(listaRecetas)
 .post(crearReceta);
 
 export default router;
