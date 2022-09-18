@@ -10,6 +10,11 @@ Expressjs: npm install express --save
 babel: npm i babel-cli babel-preset-env
 nodemon: npm install -g nodemon
 
+## instalaciones middleware: 
+
+morgan: npm install morgan
+cors: npm install cors
+
 ## Inicializar PUERTO:
 
  Para produccion : npm start
