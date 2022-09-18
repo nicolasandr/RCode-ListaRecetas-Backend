@@ -45,7 +45,7 @@ export const obtenerReceta = async (req, res) => {
     try {
         //buscamos el id que todavia no tenemos
         console.log(req.params.id);
-        //buscar en la BD la coleccion de productos
+        //buscar en la BD la coleccion de recetas
         const RecetaBuscada = await Receta.findById(req.params.id);
         //enviar la respuesta
         res.status(200).json(RecetaBuscada);
@@ -53,6 +53,22 @@ export const obtenerReceta = async (req, res) => {
         console.log(error);
         res.status(404).json({
             mensaje: 'Error al buscar las recetas',
+        });
+    }
+};
+
+export const editarReceta = async (req, res) => {
+    try {
+        //validacion
+        //buscar la receta por id y luego modificarla
+        await Receta.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: 'La receta fue modificada',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar la receta',
         });
     }
 };
