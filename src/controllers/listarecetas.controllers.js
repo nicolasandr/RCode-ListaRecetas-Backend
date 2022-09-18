@@ -1,3 +1,28 @@
-export const crearReceta = (req, res) => {
-    res.send('primera peticion get listarecetas');
+import Receta from '../models/receta';
+
+export const crearReceta = async (req, res) => {
+    //esto se agrega
+    try {
+        console.log(req.body);
+        //validacion
+        //crear un objeto para guardar en la BD
+        const nuevaReceta = new Receta({
+            titulo: req.body.titulo,
+            descripcion: req.body.descripcion,
+            imagen: req.body.imagen,
+            ingredientes: req.body.ingredientes
+        });
+        //guardar efectivamente en la BD
+        await nuevaReceta.save();
+        //enviar respuesta al frontend
+        res.status(201).json({
+            mensaje: 'La receta fue creada exitosamente',
+        });
+        // si algo falla tambien enviar una respuesta
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'La receta enviada no pudo ser creada',
+        });
+    }
 };

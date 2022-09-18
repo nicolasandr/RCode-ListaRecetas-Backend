@@ -27,4 +27,4 @@ app.use(express.static('./public'));
 
 //rutas
 
-app.use('/api', router);
+app.use('/apireceta', router);
