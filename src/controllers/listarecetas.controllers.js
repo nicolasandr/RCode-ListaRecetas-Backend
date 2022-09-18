@@ -1,10 +1,18 @@
 import Receta from '../models/receta';
+import { validationResult } from 'express-validator';
 
 export const crearReceta = async (req, res) => {
     //esto se agrega
     try {
         console.log(req.body);
         //validacion
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                //  errors: errors.mapped()// este devuelve el error que ocurre
+                errors: errors.array(), // este devuelve la lista de errores
+            });
+        }
         //crear un objeto para guardar en la BD
         const nuevaReceta = new Receta({
             titulo: req.body.titulo,

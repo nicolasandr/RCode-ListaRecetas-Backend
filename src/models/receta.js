@@ -11,6 +11,7 @@ const recetaSchema = new Schema({
     descripcion: {
         type: String,
         required: true,
+        minlength: 5,
     },
     imagen: {
         type: String,
@@ -19,7 +20,7 @@ const recetaSchema = new Schema({
     ingredientes: {
         type: Array,
         required: true,
-    }
+    },
 });
 const Receta = mongoose.model('receta', recetaSchema);
 

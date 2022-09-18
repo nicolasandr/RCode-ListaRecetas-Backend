@@ -10,6 +10,7 @@ Expressjs: npm install express --save
 babel: npm i babel-cli babel-preset-env
 nodemon: npm install -g nodemon
 mongoose: npm install mongoose --save
+express validator: npm install --save express-validator
 
 ## instalaciones middleware: 
 
