@@ -9,6 +9,7 @@ página, desde otra pagina debo poder agregar, modificar o quitar las recetas
 Expressjs: npm install express --save 
 babel: npm i babel-cli babel-preset-env
 nodemon: npm install -g nodemon
+mongoose: npm install mongoose --save
 
 ## instalaciones middleware: 
 

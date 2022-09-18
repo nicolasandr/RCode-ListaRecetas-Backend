@@ -1,6 +1,9 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import './src/database';
+import  './src/routes/listarecetas.routes'
+import router from './src/routes/listarecetas.routes';
 
 //instancia de express
 const app = express();
@@ -24,6 +27,4 @@ app.use(express.static('./public'));
 
 //rutas
 
-app.get('/',(req,res)=>{
- res.send('primera peticion get listarecetas')
-})
+app.use('/api', router);
