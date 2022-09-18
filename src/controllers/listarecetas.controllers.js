@@ -40,3 +40,19 @@ export const listaRecetas = async (req, res) => {
         });
     }
 };
+
+export const obtenerReceta = async (req, res) => {
+    try {
+        //buscamos el id que todavia no tenemos
+        console.log(req.params.id);
+        //buscar en la BD la coleccion de productos
+        const RecetaBuscada = await Receta.findById(req.params.id);
+        //enviar la respuesta
+        res.status(200).json(RecetaBuscada);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar las recetas',
+        });
+    }
+};
