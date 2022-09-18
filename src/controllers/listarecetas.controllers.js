@@ -72,3 +72,18 @@ export const editarReceta = async (req, res) => {
         });
     }
 };
+export const borrarReceta = async (req, res) => {
+    try {
+        //buscar la tarea por el id en la collection de productos de la BD y luego borrar
+        await Receta.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: 'La Receta fue eliminada correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'error al intentar buscar la tarea',
+        });
+    }
+};
+
