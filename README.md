@@ -4,9 +4,7 @@
 Crea una aplicación web, que permita mostrar un blog de recetas de cocina en una
 página, desde otra pagina debo poder agregar, modificar o quitar las recetas.
 
-## instalaciones: 
-
-### Todas las instalaciones necesarias con: `npm install`
+## instalaciones: `npm install`
 
 ## Inicializar PUERTO:
 
