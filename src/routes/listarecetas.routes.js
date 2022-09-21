@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {borrarReceta, crearReceta, editarReceta, listaRecetas, obtenerReceta} from '../controllers/listarecetas.controllers'
+import {borrarReceta, crearReceta, crearUsuario, editarReceta, listaRecetas, listausuarios, obtenerReceta} from '../controllers/listarecetas.controllers'
 import validarReceta from '../helpers/validacionReceta';
 
 const router = Router();
@@ -8,6 +8,10 @@ const router = Router();
 router.route('/receta')
 .get(listaRecetas)
 .post(validarReceta,crearReceta)
+
+router.route('/usuario')
+.get(listausuarios)
+.post(crearUsuario)
 
 router.route('/receta/:id')
 .get(obtenerReceta)

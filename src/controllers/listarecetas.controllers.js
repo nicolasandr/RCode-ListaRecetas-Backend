@@ -1,6 +1,6 @@
 import Receta from '../models/receta';
 import { validationResult } from 'express-validator';
-
+import Usuario from '../models/usuario';
 export const crearReceta = async (req, res) => {
     //esto se agrega
     try {
@@ -44,7 +44,7 @@ export const listaRecetas = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje: 'Error al buscar los productos',
+            mensaje: 'Error al buscar las recetas',
         });
     }
 };
@@ -94,4 +94,47 @@ export const borrarReceta = async (req, res) => {
         });
     }
 };
-
+export const crearUsuario = async (req, res) => {
+    //esto se agrega
+    try {
+        console.log(req.body);
+        //validacion
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                //  errors: errors.mapped()// este devuelve el error que ocurre
+                errors: errors.array(), // este devuelve la lista de errores
+            });
+        }
+        //crear un objeto para guardar en la BD
+        const nuevoUsuario = new Usuario({
+            administrador: req.body.administrador,
+            claveadmin: req.body.claveadmin,
+        });
+        //guardar efectivamente en la BD
+        await nuevoUsuario.save();
+        //enviar respuesta al frontend
+        res.status(201).json({
+            mensaje: 'El usuario fue creado exitosamente',
+        });
+        // si algo falla tambien enviar una respuesta
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'El usuario creado no pudo ser enviado',
+        });
+    }
+};
+export const listausuarios = async (req, res) => {
+    try {
+        //buscar en la BD la coleccion de recetas
+        const listausuario = await Usuario.find();
+        //enviar la respuesta
+        res.status(200).json(listausuario);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar los usuarios',
+        });
+    }
+};
